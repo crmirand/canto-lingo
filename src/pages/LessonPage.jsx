@@ -2,6 +2,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Play, Star, RotateCcw } from 'lucide-react'
 import { getLessonById } from '../data/index.js'
 import { Button } from '../components/ui/Button.jsx'
+import { PronunciationLink } from '../components/PronunciationLink.jsx'
+import { ReferenceLesson } from '../components/ReferenceLesson.jsx'
 
 export function LessonPage({ lessonProgress }) {
   const { id } = useParams()
@@ -18,6 +20,11 @@ export function LessonPage({ lessonProgress }) {
   }
 
   const progress = lessonProgress?.[id]
+
+  // Reference lessons render their own layout
+  if (lesson.type === 'reference') {
+    return <ReferenceLesson lesson={lesson} />
+  }
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 pb-20">
@@ -61,7 +68,10 @@ export function LessonPage({ lessonProgress }) {
                 <p className="font-semibold text-red-600 text-sm">{v.yale}</p>
                 <p className="text-xs text-gray-400">{v.jyutping}</p>
               </div>
-              <p className="text-sm text-gray-600 text-right flex-shrink-0 max-w-[120px] leading-tight">{v.english}</p>
+              <div className="flex flex-col items-end gap-1">
+                <p className="text-sm text-gray-600 text-right leading-tight">{v.english}</p>
+                <PronunciationLink characters={v.characters} />
+              </div>
             </div>
           ))}
         </div>

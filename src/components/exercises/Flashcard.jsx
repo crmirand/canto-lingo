@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../ui/Button.jsx'
+import { PronunciationLink } from '../PronunciationLink.jsx'
 
 export function Flashcard({ exercise, onComplete }) {
   const [flipped, setFlipped] = useState(false)
@@ -41,6 +42,7 @@ export function Flashcard({ exercise, onComplete }) {
               {item.notes && (
                 <p className="text-xs text-gray-400 text-center mt-1 italic max-w-xs">{item.notes}</p>
               )}
+              <PronunciationLink characters={item.characters} className="mt-2" />
             </div>
           )}
         </div>

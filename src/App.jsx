@@ -6,7 +6,7 @@ import { LessonPage } from './pages/LessonPage.jsx'
 import { LearnPage } from './pages/LearnPage.jsx'
 
 export default function App() {
-  const { xp, streak, lessonProgress, completeLesson } = useProgress()
+  const { xp, streak, lessonProgress, completeLesson, reset } = useProgress()
 
   return (
     <HashRouter>
@@ -22,7 +22,7 @@ export default function App() {
           path="/*"
           element={
             <div className="min-h-full flex flex-col">
-              <Header xp={xp} streak={streak.current} />
+              <Header xp={xp} streak={streak.current} onReset={reset} />
               <main className="flex-1">
                 <Routes>
                   <Route

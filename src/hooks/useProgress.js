@@ -5,6 +5,7 @@ import {
   getAllLessonProgress,
   saveLessonResult,
   recordActivityToday,
+  resetAllProgress,
 } from '../utils/storage.js'
 
 export function useProgress() {
@@ -30,5 +31,10 @@ export function useProgress() {
     return () => window.removeEventListener('focus', refresh)
   }, [refresh])
 
-  return { xp, streak, lessonProgress, completeLesson, refresh }
+  const reset = useCallback(() => {
+    resetAllProgress()
+    refresh()
+  }, [refresh])
+
+  return { xp, streak, lessonProgress, completeLesson, refresh, reset }
 }

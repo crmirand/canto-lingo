@@ -32,7 +32,9 @@ export function LessonCard({ lesson, progress, locked = false }) {
             <span className="text-gray-400 text-sm font-chinese">({lesson.titleZh})</span>
           </div>
           <p className="text-sm text-gray-500 truncate mt-0.5">{lesson.description}</p>
-          <p className="text-xs text-gray-400 mt-1">{lesson.vocabulary.length} words</p>
+          {lesson.type !== 'reference' && (
+            <p className="text-xs text-gray-400 mt-1">{lesson.vocabulary.length} words</p>
+          )}
         </div>
 
         {/* Status */}
@@ -53,7 +55,9 @@ export function LessonCard({ lesson, progress, locked = false }) {
           ) : locked ? (
             <Lock size={18} className="text-gray-400" />
           ) : (
-            <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-1 rounded-full">Start</span>
+            <span className="text-xs font-semibold text-red-500 bg-red-50 px-2 py-1 rounded-full">
+              {lesson.type === 'reference' ? 'Read' : 'Start'}
+            </span>
           )}
         </div>
       </div>

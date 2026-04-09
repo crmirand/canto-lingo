@@ -85,7 +85,7 @@ export function LearnPage({ onComplete }) {
 
       {/* Exercise area */}
       <div className="flex-1 flex flex-col justify-center px-4 py-8 max-w-2xl mx-auto w-full">
-        {current && <ExerciseRenderer exercise={current} onComplete={handleExerciseComplete} />}
+        {current && <ExerciseRenderer key={current.id} exercise={current} onComplete={handleExerciseComplete} />}
       </div>
     </div>
   )

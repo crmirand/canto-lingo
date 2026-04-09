@@ -104,3 +104,12 @@ function offsetDay(n) {
   d.setDate(d.getDate() + n)
   return d.toISOString().slice(0, 10)
 }
+
+// --- Reset ---
+export function resetAllProgress() {
+  try {
+    localStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // ignore
+  }
+}

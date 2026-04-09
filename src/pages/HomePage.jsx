@@ -42,8 +42,9 @@ export function HomePage({ xp, streak, lessonProgress }) {
             </div>
             <div className="flex flex-col gap-3">
               {lessons.map((lesson, idx) => {
-                // Unlock: first lesson always unlocked, rest unlock after previous completed
-                const prevLesson = idx > 0 ? lessons[idx - 1] : null
+                // Reference lessons are always unlocked
+                const isRef = lesson.type === 'reference'
+                const prevLesson = !isRef && idx > 0 ? lessons[idx - 1] : null
                 const locked = prevLesson ? !allProgress[prevLesson.id]?.completed : false
                 return (
                   <LessonCard
