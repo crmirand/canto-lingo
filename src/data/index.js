@@ -2,9 +2,12 @@ import { lessonIntro } from './lessons/lesson-intro.js'
 import { lesson01 } from './lessons/lesson-01.js'
 import { lesson02 } from './lessons/lesson-02.js'
 import { lesson03 } from './lessons/lesson-03.js'
+import { lesson04 } from './lessons/lesson-04.js'
+import { lesson05 } from './lessons/lesson-05.js'
+import { lesson06 } from './lessons/lesson-06.js'
 
 // Add new lessons here — they appear automatically in the app
-export const allLessons = [lessonIntro, lesson01, lesson02, lesson03]
+export const allLessons = [lessonIntro, lesson01, lesson02, lesson03, lesson04, lesson05, lesson06]
 
 export const units = [
   {
@@ -20,6 +23,13 @@ export const units = [
     titleZh: '第一單元：基礎',
     description: 'Greetings, people, and numbers',
     lessonIds: ['lesson-01', 'lesson-02', 'lesson-03'],
+  },
+  {
+    id: 'unit-2',
+    title: 'Unit 2: Culture & Context',
+    titleZh: '第二單元：文化與語境',
+    description: 'Written vs. spoken language, Qingming Festival, and Cantonese background',
+    lessonIds: ['lesson-04', 'lesson-05', 'lesson-06'],
   },
 ]
 
