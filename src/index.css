@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+
+  /* Use Chinese font class for characters */
+  .font-chinese {
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Apple LiGothic Medium", sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll for the whole page */
+  html {
+    scroll-behavior: smooth;
+  }
+}
