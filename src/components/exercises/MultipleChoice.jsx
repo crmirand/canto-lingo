@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { Button } from '../ui/Button.jsx'
+import { SpeakButton } from '../SpeakButton.jsx'
 
 export function MultipleChoice({ exercise, onComplete }) {
   const [selected, setSelected] = useState(null)
   const [confirmed, setConfirmed] = useState(false)
-  const { promptLabel, promptDisplay, correctAnswer, choices } = exercise
+  const { promptLabel, promptDisplay, correctAnswer, choices, item } = exercise
 
   const isCorrect = selected === correctAnswer
 
@@ -19,10 +20,6 @@ export function MultipleChoice({ exercise, onComplete }) {
     setConfirmed(true)
   }
 
-  function handleContinue() {
-    onComplete(isCorrect)
-  }
-
   function choiceStyle(choice) {
     if (!confirmed) {
       return selected === choice
@@ -34,7 +31,6 @@ export function MultipleChoice({ exercise, onComplete }) {
     return 'border-gray-200 bg-white opacity-50'
   }
 
-  // Determine display font for choices based on exercise type
   const isChineseChoice = exercise.subtype === 'mc-characters'
   const isYaleChoice = exercise.subtype === 'mc-yale' || exercise.subtype === 'mc-jyutping'
 
@@ -44,7 +40,10 @@ export function MultipleChoice({ exercise, onComplete }) {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 text-center">
         <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">{promptLabel}</p>
         {promptDisplay.characters && (
-          <p className="font-chinese text-5xl font-bold text-gray-900 leading-tight">{promptDisplay.characters}</p>
+          <div className="flex items-center justify-center gap-3">
+            <p className="font-chinese text-5xl font-bold text-gray-900 leading-tight">{promptDisplay.characters}</p>
+            <SpeakButton characters={promptDisplay.characters} size="lg" />
+          </div>
         )}
         {promptDisplay.yale && (
           <p className="text-xl font-semibold text-red-600 mt-1">{promptDisplay.yale}</p>
@@ -78,7 +77,7 @@ export function MultipleChoice({ exercise, onComplete }) {
         ))}
       </div>
 
-      {/* Feedback */}
+      {/* Feedback — show speak button for the correct answer */}
       {confirmed && (
         <div
           className={`rounded-xl p-4 flex items-center gap-3 animate-slide-up ${
@@ -90,16 +89,21 @@ export function MultipleChoice({ exercise, onComplete }) {
           ) : (
             <XCircle size={22} className="text-red-500 flex-shrink-0" />
           )}
-          <div>
+          <div className="flex-1">
             <p className={`font-bold text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
               {isCorrect ? 'Correct!' : 'Not quite'}
             </p>
             {!isCorrect && (
-              <p className="text-sm text-gray-600 mt-0.5">
-                Answer: <span className="font-semibold">{correctAnswer}</span>
-              </p>
+              <div className="flex items-center gap-2 mt-0.5">
+                <p className="text-sm text-gray-600">
+                  Answer: <span className="font-semibold">{correctAnswer}</span>
+                </p>
+              </div>
             )}
           </div>
+          {item?.characters && (
+            <SpeakButton characters={item.characters} size="md" />
+          )}
         </div>
       )}
 
@@ -109,7 +113,7 @@ export function MultipleChoice({ exercise, onComplete }) {
           Check
         </Button>
       ) : (
-        <Button variant={isCorrect ? 'success' : 'primary'} className="w-full" onClick={handleContinue}>
+        <Button variant={isCorrect ? 'success' : 'primary'} className="w-full" onClick={() => onComplete(isCorrect)}>
           Continue
         </Button>
       )}

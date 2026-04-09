@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import { SpeakButton } from './SpeakButton.jsx'
 
 export function ReferenceLesson({ lesson }) {
   return (
@@ -116,9 +117,12 @@ function ToneChart({ section }) {
               <span className="font-bold text-red-600 font-mono">{tone.yaleMark}</span>
               <span className="text-gray-400 text-xs ml-2">/ {tone.jyutpingNum}</span>
             </div>
-            <div className="text-right flex-shrink-0">
-              <span className="font-chinese text-xl font-bold text-gray-900">{tone.example}</span>
-              <p className="text-xs text-gray-500">{tone.meaning}</p>
+            <div className="flex items-center gap-1 flex-shrink-0">
+              <div className="text-right">
+                <span className="font-chinese text-xl font-bold text-gray-900">{tone.example}</span>
+                <p className="text-xs text-gray-500">{tone.meaning}</p>
+              </div>
+              <SpeakButton characters={tone.example} size="sm" />
             </div>
           </div>
         ))}
@@ -142,6 +146,7 @@ function InitialGrid({ section }) {
             </div>
             <div className="flex items-center gap-1 mt-1">
               <span className="font-chinese text-base font-bold text-gray-800">{item.exChar}</span>
+              <SpeakButton characters={item.exChar} size="sm" />
               <span className="text-xs text-gray-500">{item.exYale}</span>
               <span className="text-xs text-gray-400">– {item.exEng}</span>
             </div>

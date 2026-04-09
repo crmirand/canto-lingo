@@ -1,18 +1,10 @@
 import { useState } from 'react'
 import { Button } from '../ui/Button.jsx'
-import { PronunciationLink } from '../PronunciationLink.jsx'
+import { SpeakButton } from '../SpeakButton.jsx'
 
 export function Flashcard({ exercise, onComplete }) {
   const [flipped, setFlipped] = useState(false)
   const { item } = exercise
-
-  function handleKnewIt() {
-    onComplete(true)
-  }
-
-  function handleDidntKnow() {
-    onComplete(false)
-  }
 
   return (
     <div className="flex flex-col items-center gap-6 w-full max-w-md mx-auto animate-fade-in">
@@ -26,14 +18,19 @@ export function Flashcard({ exercise, onComplete }) {
         tabIndex={0}
         onKeyDown={(e) => e.key === 'Enter' && !flipped && setFlipped(true)}
       >
-        {/* Front */}
         <div className="p-8 flex flex-col items-center justify-center min-h-48 gap-3">
-          <p className="font-chinese text-6xl font-bold text-gray-900 text-center leading-tight">
-            {item.characters}
-          </p>
+          {/* Characters + speak button always visible */}
+          <div className="flex items-center gap-3">
+            <p className="font-chinese text-6xl font-bold text-gray-900 text-center leading-tight">
+              {item.characters}
+            </p>
+            <SpeakButton characters={item.characters} size="lg" />
+          </div>
+
           {!flipped && (
             <p className="text-sm text-gray-400 mt-2">Tap to reveal</p>
           )}
+
           {flipped && (
             <div className="flex flex-col items-center gap-2 animate-slide-up border-t border-gray-100 w-full pt-4 mt-2">
               <p className="text-xl font-semibold text-red-600 tracking-wide">{item.yale}</p>
@@ -42,7 +39,6 @@ export function Flashcard({ exercise, onComplete }) {
               {item.notes && (
                 <p className="text-xs text-gray-400 text-center mt-1 italic max-w-xs">{item.notes}</p>
               )}
-              <PronunciationLink characters={item.characters} className="mt-2" />
             </div>
           )}
         </div>
@@ -50,10 +46,10 @@ export function Flashcard({ exercise, onComplete }) {
 
       {flipped ? (
         <div className="flex gap-3 w-full">
-          <Button variant="secondary" className="flex-1" onClick={handleDidntKnow}>
+          <Button variant="secondary" className="flex-1" onClick={() => onComplete(false)}>
             Still learning
           </Button>
-          <Button variant="success" className="flex-1" onClick={handleKnewIt}>
+          <Button variant="success" className="flex-1" onClick={() => onComplete(true)}>
             Got it!
           </Button>
         </div>

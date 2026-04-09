@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Play, Star, RotateCcw } from 'lucide-react'
 import { getLessonById } from '../data/index.js'
 import { Button } from '../components/ui/Button.jsx'
-import { PronunciationLink } from '../components/PronunciationLink.jsx'
+import { SpeakButton } from '../components/SpeakButton.jsx'
 import { ReferenceLesson } from '../components/ReferenceLesson.jsx'
 
 export function LessonPage({ lessonProgress }) {
@@ -62,16 +62,14 @@ export function LessonPage({ lessonProgress }) {
         <h2 className="font-bold text-gray-900 mb-3">Vocabulary ({lesson.vocabulary.length} words)</h2>
         <div className="flex flex-col gap-2">
           {lesson.vocabulary.map((v) => (
-            <div key={v.id} className="bg-white rounded-xl border border-gray-100 shadow-sm px-4 py-3 flex items-center gap-4">
-              <span className="font-chinese text-2xl font-bold text-gray-900 w-16 flex-shrink-0">{v.characters}</span>
+            <div key={v.id} className="bg-white rounded-xl border border-gray-100 shadow-sm px-4 py-3 flex items-center gap-3">
+              <span className="font-chinese text-2xl font-bold text-gray-900 w-14 flex-shrink-0">{v.characters}</span>
               <div className="flex-1 min-w-0">
                 <p className="font-semibold text-red-600 text-sm">{v.yale}</p>
                 <p className="text-xs text-gray-400">{v.jyutping}</p>
               </div>
-              <div className="flex flex-col items-end gap-1">
-                <p className="text-sm text-gray-600 text-right leading-tight">{v.english}</p>
-                <PronunciationLink characters={v.characters} />
-              </div>
+              <p className="text-sm text-gray-600 text-right flex-shrink-0 max-w-[110px] leading-tight">{v.english}</p>
+              <SpeakButton characters={v.characters} size="sm" />
             </div>
           ))}
         </div>
