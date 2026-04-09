@@ -2,7 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Play, Star, RotateCcw } from 'lucide-react'
 import { getLessonById } from '../data/index.js'
 import { Button } from '../components/ui/Button.jsx'
-import { SpeakButton } from '../components/SpeakButton.jsx'
+import { PronunciationLink } from '../components/PronunciationLink.jsx'
 import { ReferenceLesson } from '../components/ReferenceLesson.jsx'
 
 export function LessonPage({ lessonProgress }) {
@@ -68,8 +68,10 @@ export function LessonPage({ lessonProgress }) {
                 <p className="font-semibold text-red-600 text-sm">{v.yale}</p>
                 <p className="text-xs text-gray-400">{v.jyutping}</p>
               </div>
-              <p className="text-sm text-gray-600 text-right flex-shrink-0 max-w-[110px] leading-tight">{v.english}</p>
-              <SpeakButton characters={v.characters} size="sm" />
+              <div className="flex flex-col items-end gap-1">
+                <p className="text-sm text-gray-600 text-right leading-tight">{v.english}</p>
+                <PronunciationLink characters={v.characters} />
+              </div>
             </div>
           ))}
         </div>

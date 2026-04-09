@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Button } from '../ui/Button.jsx'
-import { SpeakButton } from '../SpeakButton.jsx'
+import { PronunciationLink } from '../PronunciationLink.jsx'
 
 export function Flashcard({ exercise, onComplete }) {
   const [flipped, setFlipped] = useState(false)
@@ -19,13 +19,9 @@ export function Flashcard({ exercise, onComplete }) {
         onKeyDown={(e) => e.key === 'Enter' && !flipped && setFlipped(true)}
       >
         <div className="p-8 flex flex-col items-center justify-center min-h-48 gap-3">
-          {/* Characters + speak button always visible */}
-          <div className="flex items-center gap-3">
-            <p className="font-chinese text-6xl font-bold text-gray-900 text-center leading-tight">
-              {item.characters}
-            </p>
-            <SpeakButton characters={item.characters} size="lg" />
-          </div>
+          <p className="font-chinese text-6xl font-bold text-gray-900 text-center leading-tight">
+            {item.characters}
+          </p>
 
           {!flipped && (
             <p className="text-sm text-gray-400 mt-2">Tap to reveal</p>
@@ -39,6 +35,7 @@ export function Flashcard({ exercise, onComplete }) {
               {item.notes && (
                 <p className="text-xs text-gray-400 text-center mt-1 italic max-w-xs">{item.notes}</p>
               )}
+              <PronunciationLink characters={item.characters} className="mt-2" />
             </div>
           )}
         </div>
