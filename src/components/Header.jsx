@@ -22,6 +22,12 @@ export function Header({ xp = 0, streak = 0, onReset }) {
           </Link>
 
           <div className="flex items-center gap-4">
+            <Link
+              to="/practice"
+              className="text-xs font-bold text-white bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-full transition-colors"
+            >
+              Quizlet
+            </Link>
             <div className="flex items-center gap-1.5 text-sm font-semibold text-orange-500">
               <Flame size={18} className={streak > 0 ? 'text-orange-500' : 'text-gray-300'} />
               <span>{streak}</span>
