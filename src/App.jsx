@@ -4,6 +4,7 @@ import { Header } from './components/Header.jsx'
 import { HomePage } from './pages/HomePage.jsx'
 import { LessonPage } from './pages/LessonPage.jsx'
 import { LearnPage } from './pages/LearnPage.jsx'
+import { PracticePage } from './pages/PracticePage.jsx'
 
 export default function App() {
   const { xp, streak, lessonProgress, completeLesson, reset } = useProgress()
@@ -32,6 +33,10 @@ export default function App() {
                   <Route
                     path="/lesson/:id"
                     element={<LessonPage lessonProgress={lessonProgress} />}
+                  />
+                  <Route
+                    path="/practice"
+                    element={<PracticePage />}
                   />
                 </Routes>
               </main>

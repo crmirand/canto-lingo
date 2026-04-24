@@ -1,4 +1,5 @@
-import { Flame, Star, BookOpen } from 'lucide-react'
+import { Flame, Star, BookOpen, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { LessonCard } from '../components/LessonCard.jsx'
 import { units, allLessons } from '../data/index.js'
 
@@ -27,6 +28,21 @@ export function HomePage({ xp, streak, lessonProgress }) {
           />
         </div>
       </div>
+
+      {/* Practice All shortcut */}
+      <Link
+        to="/practice"
+        className="flex items-center gap-3 bg-white border-2 border-red-100 hover:border-red-400 rounded-2xl px-5 py-4 mb-6 shadow-sm hover:shadow-md transition-all group"
+      >
+        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center flex-shrink-0 shadow-sm">
+          <Zap size={22} className="text-white" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <p className="font-bold text-gray-900 group-hover:text-red-600 transition-colors">Practice All Words</p>
+          <p className="text-sm text-gray-500">Infinite matching game · all lessons</p>
+        </div>
+        <span className="text-xs font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-full flex-shrink-0">練習</span>
+      </Link>
 
       {/* Units */}
       {units.map((unit) => {
