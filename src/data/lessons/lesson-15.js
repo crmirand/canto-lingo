@@ -53,7 +53,7 @@ export const lesson15 = {
     {
       id: 'l15-05',
       characters: '咪客氣啦',
-      yale: 'māih haak hei lā',
+      yale: 'màih haak hei lā',
       jyutping: 'mai4 haak3 hei3 laa1',
       english: 'Don\'t be so polite! (warmer)',
       notes: '咪 = don\'t (softer prohibition); 啦 softens the sentence. More affectionate than 唔使客氣 — the kind of thing a host says warmly to a guest who\'s being too formal.',

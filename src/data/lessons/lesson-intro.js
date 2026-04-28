@@ -58,7 +58,7 @@ export const lessonIntro = {
       initials: [
         { yale: 'b',  ipa: 'p',   exChar: '爸', exYale: 'bàh',    exEng: 'father' },
         { yale: 'p',  ipa: 'pʰ',  exChar: '婆', exYale: 'pòh',    exEng: 'grandmother' },
-        { yale: 'm',  ipa: 'm',   exChar: '媽', exYale: 'māh',    exEng: 'mother' },
+        { yale: 'm',  ipa: 'm',   exChar: '媽', exYale: 'mā',     exEng: 'mother' },
         { yale: 'f',  ipa: 'f',   exChar: '花', exYale: 'fā',     exEng: 'flower' },
         { yale: 'd',  ipa: 't',   exChar: '打', exYale: 'dá',     exEng: 'to hit' },
         { yale: 't',  ipa: 'tʰ',  exChar: '他', exYale: 'tā',     exEng: 'he (formal)' },

@@ -28,10 +28,10 @@ export const lesson11 = {
     {
       id: 'l11-02',
       characters: '媽媽',
-      yale: 'màh māh',
+      yale: 'màh mā',
       jyutping: 'maa4 maa1',
       english: 'Mom; Mother',
-      notes: 'Standard term for mother. Written form: 母親 (móuh chān). Tones differ: first 媽 is low-falling (4) = màh, second is high-level (1) = māh.',
+      notes: 'Standard term for mother. Written form: 母親 (móuh chān). Tones differ: first 媽 is low-falling (4) = màh, second is high-level (1) = mā (no h).',
     },
     {
       id: 'l11-03',

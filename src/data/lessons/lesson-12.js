@@ -116,7 +116,7 @@ export const lesson12 = {
     {
       id: 'l12-09',
       characters: '姨媽',
-      yale: 'yìh māh',
+      yale: 'yìh mā',
       jyutping: 'ji4 maa1',
       english: "Mom's sister (maternal aunt)",
       notes: 'Also 阿姨 (a yìh) in more casual speech. 姨 is ji4 (low-falling tone 4) = yìh — not yī (tone 1). Do not confuse with 姑姐 — the paternal/maternal distinction is important.',
