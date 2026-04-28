@@ -34,8 +34,16 @@ export const lesson12 = {
       characters: '嫲嫲',
       yale: 'màh màh',
       jyutping: 'maa4 maa4',
-      english: "Paternal grandmother (Dad's mom)",
-      notes: 'Also called 阿嫲 (a màh). Specifically the father\'s mother. Note: 嫲嫲 has the same tones (both tone 4), unlike 媽媽 (4+1).',
+      english: "Paternal grandmother (Dad's mom) — southern term",
+      notes: 'Traditional Cantonese/southern term for paternal grandma. Also called 阿嫲 (a màh). Note: 嫲嫲 has the same tones (both tone 4), unlike 媽媽 (4+1).',
+    },
+    {
+      id: 'l12-02b',
+      characters: '奶奶',
+      yale: 'náaih náaih',
+      jyutping: 'naai5 naai5',
+      english: "Paternal grandmother (Dad's mom) — widely used alternate",
+      notes: 'Common alternate for paternal grandma, used alongside 嫲嫲 in HK. The difference is often regional or generational — both are understood everywhere.',
     },
     // --- GRANDPARENTS (MATERNAL) ---
     {
@@ -129,6 +137,14 @@ export const lesson12 = {
       jyutping: 'kau5 mou5',
       english: "Wife of Mom's brother (aunt by marriage, maternal)",
       notes: '舅 = mom\'s brother (舅父); 母 = mother/woman. 舅母 is the wife of your 舅父. The maternal-side in-law parallel to 伯娘/阿婶 on the paternal side.',
+    },
+    {
+      id: 'l12-09c',
+      characters: '姨丈',
+      yale: 'yìh jéung',
+      jyutping: 'ji4 zoeng3',
+      english: "Husband of Mom's sister (uncle by marriage, maternal)",
+      notes: '姨 = mom\'s sister (姨媽); 丈 = husband. 姨丈 is the husband of your 姨媽. Completes the set of in-law terms: 姑丈 (dad\'s sister\'s husband) and 姨丈 (mom\'s sister\'s husband).',
     },
     // --- COUSINS (PATERNAL 堂) ---
     {

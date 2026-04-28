@@ -42,6 +42,14 @@ export const lesson11 = {
       notes: 'Very colloquial Cantonese term for father. Only used in speech — never in formal writing. Equivalent to "old man" or "pops" in English slang.',
     },
     {
+      id: 'l11-03b',
+      characters: '老母',
+      yale: 'lóuh móuh',
+      jyutping: 'lou5 mou5',
+      english: 'Mom (colloquial/slang)',
+      notes: 'The slang equivalent of 老豆 but for mothers. Lit. "old mother." Used in relaxed speech — never formal. 老豆 (dad) and 老母 (mom) are often used together as a pair.',
+    },
+    {
       id: 'l11-04',
       characters: '哥哥',
       yale: 'gō gō',

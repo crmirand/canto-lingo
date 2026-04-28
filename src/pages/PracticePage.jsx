@@ -14,10 +14,11 @@ function shuffle(arr) {
   return a
 }
 
-function getAllVocabulary() {
+function getVocabulary(lessonIds) {
   const seen = new Set()
   return allLessons
-    .filter((l) => l.type !== 'reference' && l.vocabulary.length > 0)
+    .filter((l) => l.type !== 'reference' && l.vocabulary?.length > 0)
+    .filter((l) => !lessonIds || lessonIds.includes(l.id))
     .flatMap((l) => l.vocabulary)
     .filter((v) => {
       if (seen.has(v.characters)) return false
@@ -30,6 +31,19 @@ const MODES = [
   { id: 'char-yale',    label: '字 ↔ Yale'      },
   { id: 'char-english', label: '字 ↔ English'   },
   { id: 'yale-english', label: 'Yale ↔ English' },
+]
+
+const CATEGORIES = [
+  { id: 'all',           label: 'All Words',       emoji: '📚', lessonIds: null },
+  { id: 'greetings',     label: 'Greetings',       emoji: '👋', lessonIds: ['lesson-01', 'lesson-10'] },
+  { id: 'people',        label: 'People',          emoji: '🧑', lessonIds: ['lesson-02'] },
+  { id: 'numbers',       label: 'Numbers',         emoji: '🔢', lessonIds: ['lesson-03'] },
+  { id: 'culture',       label: 'Culture',         emoji: '✍️', lessonIds: ['lesson-04'] },
+  { id: 'qingming',      label: 'Qingming 清明',   emoji: '🌸', lessonIds: ['lesson-05'] },
+  { id: 'language',      label: 'Language',        emoji: '🗣️', lessonIds: ['lesson-07'] },
+  { id: 'introductions', label: 'Introductions',   emoji: '🤝', lessonIds: ['lesson-13'] },
+  { id: 'family',        label: 'Family',          emoji: '👨‍👩‍👧‍👦', lessonIds: ['lesson-11', 'lesson-12'] },
+  { id: 'daily',         label: 'Daily Life',      emoji: '📅', lessonIds: ['lesson-14', 'lesson-15'] },
 ]
 
 // ─── matching game helpers ───────────────────────────────────────────────────
@@ -65,13 +79,15 @@ function getBestKey(mode) {
 // ─── page ────────────────────────────────────────────────────────────────────
 
 export function PracticePage() {
-  const allVocab = useMemo(getAllVocabulary, [])
-  const [view, setView] = useState('cards')   // 'cards' | 'match'
-  const [mode, setMode] = useState('char-yale')
+  const [view, setView]         = useState('cards')      // 'cards' | 'match'
+  const [mode, setMode]         = useState('char-yale')
+  const [category, setCategory] = useState('all')
 
-  function handleModeChange(newMode) {
-    setMode(newMode)
-  }
+  const activeCat = CATEGORIES.find((c) => c.id === category)
+  const vocab = useMemo(
+    () => getVocabulary(activeCat?.lessonIds ?? null),
+    [category] // eslint-disable-line react-hooks/exhaustive-deps
+  )
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 pb-20">
@@ -81,9 +97,31 @@ export function PracticePage() {
           <ArrowLeft size={20} />
         </Link>
         <div className="flex-1">
-          <h1 className="font-extrabold text-gray-900 text-lg leading-tight">Practice All</h1>
-          <p className="text-xs text-gray-400 font-chinese">全部練習 · {allVocab.length} words</p>
+          <h1 className="font-extrabold text-gray-900 text-lg leading-tight">
+            {activeCat?.id === 'all' ? 'Practice All' : activeCat?.label}
+          </h1>
+          <p className="text-xs text-gray-400">
+            {activeCat?.id === 'all' ? '全部練習' : activeCat?.emoji} · {vocab.length} words
+          </p>
         </div>
+      </div>
+
+      {/* Category pills */}
+      <div className="flex gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none -mx-4 px-4">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat.id}
+            onClick={() => setCategory(cat.id)}
+            className={`flex-shrink-0 flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-bold transition-all border whitespace-nowrap ${
+              category === cat.id
+                ? 'bg-gray-900 text-white border-gray-900'
+                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+            }`}
+          >
+            <span>{cat.emoji}</span>
+            <span>{cat.label}</span>
+          </button>
+        ))}
       </div>
 
       {/* View toggle */}
@@ -108,7 +146,7 @@ export function PracticePage() {
         {MODES.map((m) => (
           <button
             key={m.id}
-            onClick={() => handleModeChange(m.id)}
+            onClick={() => setMode(m.id)}
             className={`flex-1 py-2 px-2 rounded-xl text-xs font-bold transition-all border ${
               mode === m.id
                 ? 'bg-red-600 text-white border-red-600 shadow-sm'
@@ -120,10 +158,13 @@ export function PracticePage() {
         ))}
       </div>
 
-      {view === 'cards'
-        ? <FlashcardDeck allVocab={allVocab} mode={mode} />
-        : <MatchGame     allVocab={allVocab} mode={mode} />
-      }
+      {vocab.length === 0 ? (
+        <p className="text-center text-gray-400 py-16 text-sm">No vocabulary in this category yet.</p>
+      ) : view === 'cards' ? (
+        <FlashcardDeck vocab={vocab} mode={mode} />
+      ) : (
+        <MatchGame vocab={vocab} mode={mode} />
+      )}
     </div>
   )
 }
@@ -142,8 +183,8 @@ function getBack(item, mode) {
   return                              { label: item.english, isChar: false, sub: item.characters }
 }
 
-function FlashcardDeck({ allVocab, mode }) {
-  const [deck, setDeck]       = useState(() => shuffle(allVocab))
+function FlashcardDeck({ vocab, mode }) {
+  const [deck, setDeck]       = useState(() => shuffle(vocab))
   const [index, setIndex]     = useState(0)
   const [flipped, setFlipped] = useState(false)
 
@@ -152,9 +193,9 @@ function FlashcardDeck({ allVocab, mode }) {
 
   // Reshuffle when mode changes
   useEffect(() => {
-    setDeck(shuffle(allVocab))
+    setDeck(shuffle(vocab))
     setIndex(0)
-  }, [mode, allVocab])
+  }, [mode, vocab])
 
   const card  = deck[index]
   const front = getFront(card, mode)
@@ -163,7 +204,7 @@ function FlashcardDeck({ allVocab, mode }) {
 
   function prev() { setIndex((i) => (i - 1 + total) % total) }
   function next() { setIndex((i) => (i + 1) % total) }
-  function reshuffle() { setDeck(shuffle(allVocab)); setIndex(0) }
+  function reshuffle() { setDeck(shuffle(vocab)); setIndex(0) }
 
   // Keyboard navigation
   useEffect(() => {
@@ -266,7 +307,7 @@ function FlashcardDeck({ allVocab, mode }) {
 
 // ─── matching game ───────────────────────────────────────────────────────────
 
-function MatchGame({ allVocab, mode }) {
+function MatchGame({ vocab, mode }) {
   const [tiles, setTiles]         = useState([])
   const [selected, setSelected]   = useState(null)
   const [matched, setMatched]     = useState(new Set())
@@ -284,7 +325,7 @@ function MatchGame({ allVocab, mode }) {
   const timerRef = useRef(null)
 
   const startRound = useCallback((currentMode, round) => {
-    const items = shuffle(allVocab).slice(0, PAIRS_PER_ROUND)
+    const items = shuffle(vocab).slice(0, PAIRS_PER_ROUND)
     setTiles(buildTiles(items, currentMode))
     setMatched(new Set())
     setSelected(null)
@@ -294,7 +335,7 @@ function MatchGame({ allVocab, mode }) {
     setRoundTime(null)
     setRoundCount(round)
     startRef.current = Date.now()
-  }, [allVocab])
+  }, [vocab])
 
   useEffect(() => { startRound(mode, 1) }, [mode]) // eslint-disable-line react-hooks/exhaustive-deps
 
