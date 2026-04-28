@@ -82,10 +82,10 @@ export const lesson12 = {
     {
       id: 'l12-07',
       characters: '舅父',
-      yale: 'kàuh fuh',
+      yale: 'káuh fuh',
       jyutping: 'kau5 fu6',
       english: "Mom's brother (maternal uncle)",
-      notes: 'Called 舅舅 (kàuh kàuh) by children. 舅 = mother\'s brother. Unlike paternal uncles, there is no elder/younger distinction for maternal uncles in standard usage.',
+      notes: 'Called 舅舅 (káuh káuh) by children. 舅 is kau5 (low-rising tone 5) = káuh — not to be confused with kau4 = kàuh. Unlike paternal uncles, there is no elder/younger distinction for maternal uncles.',
     },
     // --- AUNTS-IN-LAW / UNCLES' WIVES (PATERNAL) ---
     {
@@ -116,10 +116,10 @@ export const lesson12 = {
     {
       id: 'l12-09',
       characters: '姨媽',
-      yale: 'yī māh',
+      yale: 'yìh māh',
       jyutping: 'ji4 maa1',
       english: "Mom's sister (maternal aunt)",
-      notes: 'Also 阿姨 (a yī) in more casual speech. 姨 = mother\'s sister. Do not confuse with 姑姐 — the paternal/maternal distinction is important.',
+      notes: 'Also 阿姨 (a yìh) in more casual speech. 姨 is ji4 (low-falling tone 4) = yìh — not yī (tone 1). Do not confuse with 姑姐 — the paternal/maternal distinction is important.',
     },
     // --- UNCLE'S HUSBANDS / AUNTS' HUSBANDS ---
     {
@@ -133,10 +133,10 @@ export const lesson12 = {
     {
       id: 'l12-09b',
       characters: '舅母',
-      yale: 'kàuh móuh',
+      yale: 'káuh móuh',
       jyutping: 'kau5 mou5',
       english: "Wife of Mom's brother (aunt by marriage, maternal)",
-      notes: '舅 = mom\'s brother (舅父); 母 = mother/woman. 舅母 is the wife of your 舅父. The maternal-side in-law parallel to 伯娘/阿婶 on the paternal side.',
+      notes: '舅 = mom\'s brother (舅父); 母 = mother/woman. 舅母 is the wife of your 舅父. 舅 is kau5 = káuh (low-rising). The maternal-side in-law parallel to 伯娘/阿婶 on the paternal side.',
     },
     {
       id: 'l12-09c',
@@ -144,7 +144,7 @@ export const lesson12 = {
       yale: 'yìh jéung',
       jyutping: 'ji4 zoeng3',
       english: "Husband of Mom's sister (uncle by marriage, maternal)",
-      notes: '姨 = mom\'s sister (姨媽); 丈 = husband. 姨丈 is the husband of your 姨媽. Completes the set of in-law terms: 姑丈 (dad\'s sister\'s husband) and 姨丈 (mom\'s sister\'s husband).',
+      notes: '姨 is ji4 (low-falling tone 4) = yìh. 丈 = husband. 姨丈 is the husband of your 姨媽. Completes the in-law set: 姑丈 (dad\'s sister\'s husband) and 姨丈 (mom\'s sister\'s husband).',
     },
     // --- COUSINS (PATERNAL 堂) ---
     {
