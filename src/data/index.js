@@ -11,6 +11,10 @@ import { lesson09 } from './lessons/lesson-09.js'
 import { lesson10 } from './lessons/lesson-10.js'
 import { lesson11 } from './lessons/lesson-11.js'
 import { lesson12 } from './lessons/lesson-12.js'
+import { lesson13 } from './lessons/lesson-13.js'
+import { lesson14 } from './lessons/lesson-14.js'
+import { lesson15 } from './lessons/lesson-15.js'
+import { lesson16 } from './lessons/lesson-16.js'
 
 // Add new lessons here — they appear automatically in the app
 export const allLessons = [
@@ -19,6 +23,8 @@ export const allLessons = [
   lesson04, lesson05, lesson06,
   lesson07, lesson08, lesson09,
   lesson10, lesson11, lesson12,
+  lesson13,
+  lesson14, lesson15, lesson16,
 ]
 
 export const units = [
@@ -54,8 +60,15 @@ export const units = [
     id: 'unit-4',
     title: 'Unit 4: People & Relationships',
     titleZh: '第四單元：人際關係',
-    description: 'Extended greetings, immediate family, and extended family',
-    lessonIds: ['lesson-10', 'lesson-11', 'lesson-12'],
+    description: 'Extended greetings, immediate family, extended family, and introductions',
+    lessonIds: ['lesson-10', 'lesson-11', 'lesson-12', 'lesson-13'],
+  },
+  {
+    id: 'unit-5',
+    title: 'Unit 5: Daily Life & Grammar',
+    titleZh: '第五單元：日常生活與語法',
+    description: 'Dates and time, polite phrases, and adjective grammar',
+    lessonIds: ['lesson-14', 'lesson-15', 'lesson-16'],
   },
 ]
 

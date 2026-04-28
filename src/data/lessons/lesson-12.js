@@ -79,6 +79,23 @@ export const lesson12 = {
       english: "Mom's brother (maternal uncle)",
       notes: 'Called 舅舅 (kàuh kàuh) by children. 舅 = mother\'s brother. Unlike paternal uncles, there is no elder/younger distinction for maternal uncles in standard usage.',
     },
+    // --- AUNTS-IN-LAW / UNCLES' WIVES (PATERNAL) ---
+    {
+      id: 'l12-05b',
+      characters: '伯娘',
+      yale: 'baak nèuhng',
+      jyutping: 'baak3 noeng4',
+      english: "Wife of Dad's older brother (paternal aunt by marriage, senior)",
+      notes: '伯 = dad\'s elder brother; 娘 = woman/wife. 伯娘 is the wife of 伯父. Not to be confused with 伯父\'s blood relationship — this is specifically the spouse.',
+    },
+    {
+      id: 'l12-06b',
+      characters: '阿婶',
+      yale: 'a sám',
+      jyutping: 'aa3 sam2',
+      english: "Wife of Dad's younger brother (paternal aunt by marriage, junior)",
+      notes: '叔 = dad\'s younger brother; 婶 = his wife. Children address her as 阿婶 (a sám). Parallel to 叔父 just as 伯娘 parallels 伯父.',
+    },
     // --- AUNTS ---
     {
       id: 'l12-08',
@@ -95,6 +112,23 @@ export const lesson12 = {
       jyutping: 'ji4 maa1',
       english: "Mom's sister (maternal aunt)",
       notes: 'Also 阿姨 (a yī) in more casual speech. 姨 = mother\'s sister. Do not confuse with 姑姐 — the paternal/maternal distinction is important.',
+    },
+    // --- UNCLE'S HUSBANDS / AUNTS' HUSBANDS ---
+    {
+      id: 'l12-08b',
+      characters: '姑丈',
+      yale: 'gū jéung',
+      jyutping: 'gu1 zoeng3',
+      english: "Husband of Dad's sister (uncle by marriage, paternal)",
+      notes: '姑 = dad\'s sister (姑姐); 丈 = husband (as in 丈夫). 姑丈 is the husband of your 姑姐. Used in Cantonese-speaking families — notably more specific than English "uncle."',
+    },
+    {
+      id: 'l12-09b',
+      characters: '舅母',
+      yale: 'kàuh móuh',
+      jyutping: 'kau5 mou5',
+      english: "Wife of Mom's brother (aunt by marriage, maternal)",
+      notes: '舅 = mom\'s brother (舅父); 母 = mother/woman. 舅母 is the wife of your 舅父. The maternal-side in-law parallel to 伯娘/阿婶 on the paternal side.',
     },
     // --- COUSINS (PATERNAL 堂) ---
     {

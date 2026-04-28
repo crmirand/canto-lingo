@@ -114,5 +114,21 @@ export const lesson10 = {
       english: 'Thank you (to you specifically)',
       notes: 'Adds 你 (you) to 多謝 from Lesson 01. Adding a pronoun makes the thanks more personal and direct.',
     },
+    {
+      id: 'l10-13',
+      characters: '麻麻哋',
+      yale: 'màh màh deih',
+      jyutping: 'maa4 maa4 dei6',
+      english: 'So-so; mediocre; not great not terrible',
+      notes: 'A very common Cantonese response meaning "middling." More specific than 咁囉 — implies things are genuinely average rather than resigned indifference. Often said with a slight shrug.',
+    },
+    {
+      id: 'l10-14',
+      characters: '有心',
+      yale: 'yáuh sām',
+      jyutping: 'jau5 sam1',
+      english: 'How thoughtful; thanks for thinking of me',
+      notes: 'Lit. "have heart." Said when someone shows care or consideration — e.g. bringing you food, asking after your health, remembering something. A warm, appreciative response distinct from plain 多謝.',
+    },
   ],
 }
