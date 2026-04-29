@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Trophy, RotateCcw, ChevronLeft, ChevronRight, Shuffle } from 'lucide-react'
+import { ArrowLeft, Trophy, RotateCcw, ChevronLeft, ChevronRight, Shuffle, Copy, Check } from 'lucide-react'
 import { allLessons } from '../data/index.js'
 
 // ─── shared helpers ──────────────────────────────────────────────────────────
@@ -183,6 +183,25 @@ function getBack(item, mode) {
   return                              { label: item.english, isChar: false, sub: item.characters }
 }
 
+function CopyButton({ text }) {
+  const [copied, setCopied] = useState(false)
+  function handleCopy(e) {
+    e.stopPropagation()
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+  return (
+    <button
+      onClick={handleCopy}
+      className="absolute top-3 right-3 p-1.5 rounded-lg text-gray-300 hover:text-gray-500 hover:bg-gray-50 transition-colors"
+      aria-label="Copy character"
+    >
+      {copied ? <Check size={15} className="text-green-500" /> : <Copy size={15} />}
+    </button>
+  )
+}
+
 function FlashcardDeck({ vocab, mode }) {
   const [deck, setDeck]       = useState(() => shuffle(vocab))
   const [index, setIndex]     = useState(0)
@@ -234,12 +253,13 @@ function FlashcardDeck({ vocab, mode }) {
 
       {/* Card */}
       <div
-        className="w-full bg-white rounded-3xl shadow-lg border border-gray-100 cursor-pointer select-none min-h-56 flex flex-col items-center justify-center p-8 gap-4 transition-all duration-150 active:scale-[0.98]"
+        className="relative w-full bg-white rounded-3xl shadow-lg border border-gray-100 cursor-pointer select-none min-h-56 flex flex-col items-center justify-center p-8 gap-4 transition-all duration-150 active:scale-[0.98]"
         onClick={() => setFlipped((f) => !f)}
         role="button"
         tabIndex={0}
         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setFlipped((f) => !f)}
       >
+        <CopyButton text={card.characters} />
         {!flipped ? (
           <>
             {front.isChar
