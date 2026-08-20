@@ -44,6 +44,10 @@ const CATEGORIES = [
   { id: 'introductions', label: 'Introductions',   emoji: '🤝', lessonIds: ['lesson-13'] },
   { id: 'family',        label: 'Family',          emoji: '👨‍👩‍👧‍👦', lessonIds: ['lesson-11', 'lesson-12'] },
   { id: 'daily',         label: 'Daily Life',      emoji: '📅', lessonIds: ['lesson-14', 'lesson-15'] },
+  { id: 'numbers-ext',  label: 'Numbers+',        emoji: '🔢', lessonIds: ['lesson-03', 'lesson-17'] },
+  { id: 'money',        label: 'Money',           emoji: '💰', lessonIds: ['lesson-18'] },
+  { id: 'measure',      label: 'Measure Words',   emoji: '📏', lessonIds: ['lesson-19'] },
+  { id: 'shopping',     label: 'Shopping',        emoji: '🛍️', lessonIds: ['lesson-20'] },
 ]
 
 // ─── matching game helpers ───────────────────────────────────────────────────

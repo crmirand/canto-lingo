@@ -15,6 +15,10 @@ import { lesson13 } from './lessons/lesson-13.js'
 import { lesson14 } from './lessons/lesson-14.js'
 import { lesson15 } from './lessons/lesson-15.js'
 import { lesson16 } from './lessons/lesson-16.js'
+import { lesson17 } from './lessons/lesson-17.js'
+import { lesson18 } from './lessons/lesson-18.js'
+import { lesson19 } from './lessons/lesson-19.js'
+import { lesson20 } from './lessons/lesson-20.js'
 
 // Add new lessons here — they appear automatically in the app
 export const allLessons = [
@@ -25,6 +29,7 @@ export const allLessons = [
   lesson10, lesson11, lesson12,
   lesson13,
   lesson14, lesson15, lesson16,
+  lesson17, lesson18, lesson19, lesson20,
 ]
 
 export const units = [
@@ -69,6 +74,13 @@ export const units = [
     titleZh: '第五單元：日常生活與語法',
     description: 'Dates and time, polite phrases, and adjective grammar',
     lessonIds: ['lesson-14', 'lesson-15', 'lesson-16'],
+  },
+  {
+    id: 'unit-6',
+    title: 'Unit 6: Shopping & Numbers',
+    titleZh: '第六單元：購物與數字',
+    description: 'Extended numbers, HK money system, measure words, and shopping',
+    lessonIds: ['lesson-17', 'lesson-18', 'lesson-19', 'lesson-20'],
   },
 ]
 
